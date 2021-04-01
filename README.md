@@ -42,3 +42,9 @@ done
 1. copy script to file.sh
 2. chmod 777 file.sh
 3. Run script `OLD="[source redis]" NEW="[target redis]" PATTERN="[grep pattern]" ./file.sh`
+
+
+Example
+```
+OLD="redis-cli -p 6379" NEW="redis-cli -p 6380" PATTERN="user_" ./file.sh
+```
