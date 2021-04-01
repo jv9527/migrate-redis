@@ -9,7 +9,7 @@ Note:
 1. use `> /dev/null` to discard output , or remove it to see command status
 2. for `mac terminal` change `sed -u` to `sed -l`
 
-### migrate existing keys
+### migrate existing keys (ref: https://elliotchance.medium.com/migrating-data-between-redis-servers-without-downtime-429e4c8048e6 )
 ```
 #clear up dump log
 echo "" > redis_dump_keys.log
