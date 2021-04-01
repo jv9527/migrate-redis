@@ -1,4 +1,4 @@
-# migrate-redis
+# migrate-redis (for Ubuntu only )
 Bash script for redis migration
 
 ### live migrate
