@@ -11,9 +11,14 @@ Note:
 
 ### migrate existing keys
 ```
+#clear up dump log
+echo "" > redis_dump_keys.log
+
+#scan by pattern
 for KEY in $($OLD --scan | grep $PATTERN); do
     $OLD --raw DUMP "$KEY" | head -c-1 > /tmp/dump
     TTL=$($OLD --raw TTL "$KEY")
+    #capture key ttl
     case $TTL in
         -2)
             $NEW DEL "$KEY"
@@ -27,7 +32,10 @@ for KEY in $($OLD --scan | grep $PATTERN); do
             cat /tmp/dump | $NEW -x RESTORE "$KEY" "$TTL"
             ;;
     esac
+    #print log
     echo "$KEY (TTL = $TTL)"
+    #dump log to file for analysis
+    echo "$KEY (TTL = $TTL)" >> redis_dump_keys.log
 done
 ```
 
