@@ -38,6 +38,8 @@ for KEY in $($OLD --scan | grep $PATTERN); do
     #dump log to file for analysis
     echo "$KEY (TTL = $TTL)" >> redis_dump_keys.log
 done
+
+echo "Dump log created! Please check redis_dump_keys.log to validate"
 ```
 
 1. copy script to file.sh
