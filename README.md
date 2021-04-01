@@ -29,7 +29,7 @@ for KEY in $($OLD --scan | grep $PATTERN); do
             ;;
         *)
             $NEW DEL "$KEY"
-            #If redis version is below 5 , remove "000". That's just to make the ttl miliseconds
+            #TTL in restore is in miliseconds so we need to add 000
             cat /tmp/dump | $NEW -x RESTORE "$KEY" "$TTL""000"
             ;;
     esac
